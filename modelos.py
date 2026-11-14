@@ -1,15 +1,12 @@
 # Francisco Ivan Cortes Ruvalcaba
 #
-# modelos.py - Clases del sistema de comandas para restaurante (Avance 3 Final)
+# Clases del sistema de comandas para restaurante
 # Contiene:
 #   - ItemPedido: clase auxiliar usada para Composición (un pedido "tiene" artículos).
 #   - PedidoRestaurante: clase base (Encapsulamiento + Composición).
 #   - PedidoDomicilio: subclase (Herencia + Polimorfismo).
 
-
-# ==========================================
 # Clase auxiliar para Composición
-# ==========================================
 class ItemPedido:
     def __init__(self, nombre, precio, cantidad=1):
         # Validaciones: el artículo debe tener nombre, precio positivo y cantidad >= 1
@@ -23,7 +20,7 @@ class ItemPedido:
         self.precio = precio
         self.cantidad = cantidad
 
-    # Calcula el subtotal del artículo (precio x cantidad)
+    # Calcula el subtotal del artículo (precio * cantidad)
     def subtotal(self):
         return self.precio * self.cantidad
 
@@ -32,9 +29,7 @@ class ItemPedido:
         return f"{self.cantidad} x {self.nombre} (${self.precio:.2f} c/u) = ${self.subtotal():.2f}"
 
 
-# ==========================================
-# Creación de la clase base (Superclase)
-# ==========================================
+# Creación de la clase base (Superclase):
 class PedidoRestaurante:
     def __init__(self, numero_mesa, nombre_mesero, cliente):
         self.numero_mesa = numero_mesa
@@ -122,10 +117,7 @@ class PedidoRestaurante:
         print(f"TOTAL A PAGAR: ${self.total_pagar:.2f}")
         print("=" * 46 + "\n")
 
-
-# ==========================================
 # Uso de super() y Herencia (Subclase)
-# ==========================================
 class PedidoDomicilio(PedidoRestaurante):
     def __init__(self, numero_pedido, nombre_mesero, cliente, direccion_entrega, costo_envio):
         # super() reutiliza el constructor de la clase base
@@ -155,9 +147,7 @@ class PedidoDomicilio(PedidoRestaurante):
         self.avanzar_estado("En camino al domicilio")
         print(f" Pedido de {self.cliente} enviado a: {self.direccion_entrega}")
 
-    # ==========================================
     # Sobrescritura de métodos (Polimorfismo)
-    # ==========================================
     def imprimir_cuenta(self):
         print("\n" + "=" * 46)
         print(f"  Cuenta - DOMICILIO #{self.numero_mesa}")
