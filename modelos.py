@@ -6,10 +6,7 @@
 #   - PedidoRestaurante: clase base (Encapsulamiento + Composición).
 #   - PedidoDomicilio: subclase (Herencia + Polimorfismo).
 
-
-# ==========================================
 # Clase auxiliar para Composición
-# ==========================================
 class ItemPedido:
     def __init__(self, nombre, precio, cantidad=1):
         # Validaciones: el artículo debe tener nombre, precio positivo y cantidad >= 1
@@ -32,9 +29,7 @@ class ItemPedido:
         return f"{self.cantidad} x {self.nombre} (${self.precio:.2f} c/u) = ${self.subtotal():.2f}"
 
 
-# ==========================================
 # Creación de la clase base (Superclase)
-# ==========================================
 class PedidoRestaurante:
     def __init__(self, numero_mesa, nombre_mesero, cliente):
         self.numero_mesa = numero_mesa
@@ -155,9 +150,7 @@ class PedidoDomicilio(PedidoRestaurante):
         self.avanzar_estado("En camino al domicilio")
         print(f" Pedido de {self.cliente} enviado a: {self.direccion_entrega}")
 
-    # ==========================================
     # Sobrescritura de métodos (Polimorfismo)
-    # ==========================================
     def imprimir_cuenta(self):
         print("\n" + "=" * 46)
         print(f"  Cuenta - DOMICILIO #{self.numero_mesa}")
