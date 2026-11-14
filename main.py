@@ -8,9 +8,8 @@
 from modelos import ItemPedido, PedidoRestaurante, PedidoDomicilio
 
 
-# ==========================================
+
 # Instanciación y pruebas
-# ==========================================
 print("\n INICIANDO PEDIDOS")
 
 # Objeto 1: clase base
@@ -31,7 +30,7 @@ pedido_3.agregar_articulo("Pizza Jumbo", 250)
 pedido_3.agregar_articulo("Limonada c/mineral", 40, 2)  # cantidad = 2
 pedido_3.avanzar_estado("Pendiente por pagar")
 
-# --- Prueba de Composición ---
+# Prueba de Composición 
 print("\n PRUEBAS DE COMPOSICIÓN")
 print(f"pedido_3 tiene {len(pedido_3.articulos)} tipos de artículo y {pedido_3.total_piezas()} piezas.")
 # Se invoca un método del objeto contenido (ItemPedido) a través del pedido
@@ -42,7 +41,7 @@ print(f"Subtotal del primer artículo: ${primer_item.subtotal():.2f}")
 item_suelto = ItemPedido("Agua natural", 25, 3)
 print(f"Item independiente: {item_suelto.descripcion()}")
 
-# --- Prueba de Encapsulamiento ---
+# Prueba de Encapsulamiento
 print("\n PRUEBAS DE ENCAPSULAMIENTO")
 print(f"Total de pedido_1 (getter): ${pedido_1.total_pagar}")
 
@@ -68,13 +67,13 @@ pedido_1.aplicar_descuento(150)         # Descuento inválido
 # El atributo privado no es accesible directamente desde fuera de la clase
 print(f"¿Existe pedido_1.__total_pagar? {hasattr(pedido_1, '__total_pagar')}")
 
-# --- Prueba de Independencia de datos (self) ---
+# Prueba de Independencia de datos (self)
 print("\n INDEPENDENCIA DE DATOS ENTRE INSTANCIAS")
 print(f"Total pedido_1: ${pedido_1.total_pagar:.2f} | "
       f"Total pedido_2: ${pedido_2.total_pagar:.2f} | "
       f"Total pedido_3: ${pedido_3.total_pagar:.2f}")
 
-# --- Prueba de Polimorfismo (método sobrescrito) ---
+# Prueba de Polimorfismo (método sobrescrito)
 print("\n IMPRIMIENDO TICKETS (mismo método, distinto comportamiento)")
 for pedido in (pedido_1, pedido_2, pedido_3):
     pedido.imprimir_cuenta()
